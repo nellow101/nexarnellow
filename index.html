@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexar Nellow Music</title>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles and animations */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000; /* Fallback for video */
+            color: #fff;
+            overflow-y: auto; /* Explicitly allow vertical scrolling */
+        }
+
+        .video-background {
+            position: fixed; /* Changed to fixed to keep it in place during scroll */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            padding-bottom: 4rem; /* Add some padding at the bottom */
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+        .animate-fade-in-up { animation: fadeInUp 1s ease-out forwards; }
+        .animate-bounce-in { animation: bounceIn 0.5s ease-out; }
+
+        /* Delay utilities for animations */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+
+        /* Notification specific styles */
+        .notification {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #10B981; /* Green-500 */
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease-out;
+            z-index: 50;
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body class="relative min-h-screen bg-black text-white">
+    <!-- Video Background -->
+<video autoplay loop muted class="video-background">
+    <source src="pictures/myback.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+    <!-- Overlay for content -->
+    <div class="content-overlay">
+
+        <!-- Header/Hero Section -->
+        <header class="text-center mb-16 mt-8 md:mt-16">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4 animate-fade-in-up">
+                Nexar Nellow Music
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 animate-fade-in-up delay-100">
+                Singer & Beat Maker/Photographer
+            </p>
+        </header>
+
+        <!-- About Section -->
+        <section class="bg-gray-800 bg-opacity-75 rounded-2xl p-8 md:p-12 max-w-4xl mx-auto mb-16 shadow-xl backdrop-blur-sm animate-fade-in delay-200">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                <div class="flex-shrink-0">
+                    <!-- Your picture - Increased size to w-64 h-64 -->
+                    <img src="pictures/mypic.jpg" alt="Nexar Nellow"
+    class="w-64 h-64 rounded-full border-4 border-purple-500 object-cover shadow-lg"
+/>
+                </div>
+                <div class="text-center md:text-left">
+                    <h2 class="text-3xl font-bold text-purple-400 mb-4">About Nexar Nellow</h2>
+                    <p class="text-lg text-gray-200 leading-relaxed">
+                        Nexar Nellow is a dynamic force in the emotional hip-hop scene, seamlessly blending raw vocal talent with innovative beat production. Not only that, he also take amazing pictures...Of course he's a Photographer bro! As a dedicated Singer and Beat Maker/ Photographer with certificates, Nellow crafts immersive soundscapes and delivers powerful narratives, pushing the boundaries of relativeness music & Cinematography. Dive into a world where rhythm meets soul. Peace✌!!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beats Section -->
+        <section class="bg-gray-800 bg-opacity-75 rounded-2xl p-8 md:p-12 max-w-4xl mx-auto mb-16 shadow-xl backdrop-blur-sm animate-fade-in delay-300">
+            <h2 class="text-3xl font-bold text-purple-400 text-center mb-8">Exclusive Beats: Hip Hop, Trap, UK Drill, Emotional/Romantic, & More...</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Beat Card 1: Hip Hop -->
+<div class="bg-gray-900 rounded-xl p-6 shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+    <h3 class="text-xl font-semibold mb-2"> Melodic Trap </h3>
+    <p class="text-gray-400 text-sm mb-4">US melodic vibes with some romanctic and vibey feel.</p>
+    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-lg play-demo-btn" data-audio-id="hiphop-demo">
+        Play Demo
+    </button>
+    <audio id="hiphop-demo" src="https://dl.dropboxusercontent.com/scl/fi/flterbxvvi6j6mgw1mct5/Melodic-Trap-by-Nexar-Nellow.mp3?rlkey=swuunisykyhn0pm8d13odcvfz&st=42q5k5v2" preload="none"></audio>
+</div>
+
+<!-- Beat Card 2: Trap -->
+<div class="bg-gray-900 rounded-xl p-6 shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+    <h3 class="text-xl font-semibold mb-2">Emotional Trap</h3>
+    <p class="text-gray-400 text-sm mb-4">Emotional and relative instrumental with catchy melodies.</p>
+    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-lg play-demo-btn" data-audio-id="trap-demo">
+        Play Demo
+    </button>
+    <audio id="trap-demo" src="https://dl.dropboxusercontent.com/scl/fi/ho7fxm30gobxaid870ww3/Emotional-hip-hop-beat-by-Nexar-Nellow.mp3?rlkey=ngcljs92m8bogtl1g6offlnus&st=sc8qchpy" preload="none"></audio>
+</div>
+
+<!-- Beat Card 3: UK Drill -->
+<div class="bg-gray-900 rounded-xl p-6 shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+    <h3 class="text-xl font-semibold mb-2">UK Drill</h3>
+    <p class="text-gray-400 text-sm mb-4">Hard-hitting percussion, sliding 808s, and eerie melodies characteristic of the UK drill sound.</p>
+    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-lg play-demo-btn" data-audio-id="drill-demo">
+        Play Demo
+    </button>
+    <audio id="drill-demo" src="https://dl.dropboxusercontent.com/scl/fi/e256cd74741tfa3cbuy1p/Drill-Beat1-by-Nexar-Nellow.mp3?rlkey=2yznzfrxtssdu8nnimgujd56q&st=k6o0yfix" preload="none"></audio>
+</div>
+
+<!-- Beat Card 4: Emotional/Romantic -->
+<div class="bg-gray-900 rounded-xl p-6 shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+    <h3 class="text-xl font-semibold mb-2">Soulful Romantic Vibe</h3>
+    <p class="text-gray-400 text-sm mb-4">Smooth, melodic beats with lush chords and a tender, emotional atmosphere.</p>
+    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-lg play-demo-btn" data-audio-id="romantic-demo">
+        Play Demo
+    </button>
+    <audio id="romantic-demo" src="https://dl.dropboxusercontent.com/scl/fi/00fn9yqt243ks6ysjb4ss/Sad-Trap-Free-Beat-by-Nexar-Nellow.mp3?rlkey=x2klxz1w3lcrjuzenifytcypl&st=4lwbxo9j" preload="none"></audio>
+</div>
+            </div>
+            <p class="text-center text-gray-300 mt-8 text-lg">
+                For **custom beats** or **licensing inquiries**, please contact me directly.
+            </p>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="bg-gray-800 bg-opacity-75 rounded-2xl p-8 md:p-12 max-w-xl mx-auto mb-16 shadow-xl backdrop-blur-sm animate-fade-in delay-400">
+            <h2 class="text-3xl font-bold text-purple-400 text-center mb-8">Get In Touch</h2>
+            <p class="text-lg text-gray-200 mb-4 text-center">
+                Reach out for collaborations, inquiries, or just to say hello!
+            </p>
+            <div class="flex flex-col items-center space-y-4">
+                <div class="flex items-center space-x-4">
+                    <span class="text-xl text-gray-100" id="email-address">nexarnellow@gmail.com</span>
+                    <button
+                        id="copy-email-btn"
+                        class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-lg flex items-center"
+                    >
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-2m-4-2l4-4m0 0l-4-4m4 4H9"></path></svg>
+                        Copy Email
+                    </button>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-xl text-gray-100">WhatsApp: +27 820 729 075</span>
+                    <a
+                        href="https://wa.me/27123456789" target="_blank" rel="noopener noreferrer"
+                        class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-lg flex items-center"
+                    >
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.001 2.001c-5.522 0-10 4.478-10 10s4.478 10 10 10 10-4.478 10-10-4.478-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zM15.485 8.533c-.156-.475-.76-.714-1.235-.558-.29.094-.537.28-.707.502-.158.204-.265.44-.33.649-.065.209-.13.523-.195.836-.065.313-.13.627-.13.94-.002.313-.002.627-.002.94-.002.313-.002.627-.002.94-.002.313.063.626.128.939.065.313.13.627.195.836.065.209.172.445.33.649.17.222.417.408.707.502.475.156 1.079-.082 1.235-.558.156-.475-.082-1.079-.558-1.235-.29-.094-.537-.28-.707-.502-.158-.204-.265-.44-.33-.649-.065-.209-.13-.523-.195.836-.065-.313-.13-.627-.13-.94-.002-.313-.002.627-.002.94-.002.313-.002.627-.002.94-.065-.313-.13-.626-.195-.836-.065-.209-.172-.445-.33-.649-.17-.222-.417-.408-.707-.502-.475-.156-1.079.082-1.235.558z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notification for Copy Email -->
+        <div id="notification" class="notification">
+            Email copied to clipboard!
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 mt-16 pb-8">
+            <p>&copy; <span id="current-year"></span> Nexar Nellow Music. All rights reserved.</p>
+            <p class="text-gray-400 mt-2">Powered by NexaTech</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            const copyEmailBtn = document.getElementById('copy-email-btn');
+            const emailAddressSpan = document.getElementById('email-address');
+            const notificationDiv = document.getElementById('notification');
+
+            // --- Copy Email to Clipboard Logic ---
+            copyEmailBtn.addEventListener('click', () => {
+                const email = emailAddressSpan.textContent;
+                const textArea = document.createElement('textarea');
+                textArea.value = email;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    // Show notification
+                    notificationDiv.style.display = 'block';
+                    notificationDiv.classList.add('animate-bounce-in');
+                    setTimeout(() => {
+                        notificationDiv.classList.remove('animate-bounce-in');
+                        notificationDiv.style.display = 'none';
+                    }, 3000); // Hide after 3 seconds
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                    notificationDiv.textContent = 'Failed to copy. Please copy manually.';
+                    notificationDiv.style.backgroundColor = '#EF4444'; /* Red-500 */
+                    notificationDiv.style.display = 'block';
+                    notificationDiv.classList.add('animate-bounce-in');
+                    setTimeout(() => {
+                        notificationDiv.classList.remove('animate-bounce-in');
+                        notificationDiv.style.display = 'none';
+                        notificationDiv.textContent = 'Email copied to clipboard!'; // Reset text
+                        notificationDiv.style.backgroundColor = '#10B981'; // Reset color
+                    }, 3000);
+                } finally {
+                    document.body.removeChild(textArea);
+                }
+            });
+
+            // --- Play Demo Button Logic ---
+            const playDemoButtons = document.querySelectorAll('.play-demo-btn');
+            let currentPlayingAudio = null; // To keep track of the currently playing audio
+            let currentPlayingButton = null; // To keep track of the button associated with current audio
+
+            playDemoButtons.forEach(button => {
+                const audioId = button.dataset.audioId;
+                const audio = document.getElementById(audioId);
+
+                if (!audio) {
+                    console.error(`Audio element with ID '${audioId}' not found.`);
+                    return; // Skip if audio element is missing
+                }
+
+                // Listener for when audio ends
+                audio.addEventListener('ended', () => {
+                    button.textContent = 'Play Demo';
+                    button.classList.remove('bg-red-600', 'hover:bg-red-700');
+                    button.classList.add('bg-purple-600', 'hover:bg-purple-700');
+                    currentPlayingAudio = null;
+                    currentPlayingButton = null;
+                });
+
+                // Listener for button click
+                button.addEventListener('click', () => {
+                    if (currentPlayingAudio && currentPlayingAudio !== audio) {
+                        // Pause previous audio if a different one is playing
+                        currentPlayingAudio.pause();
+                        currentPlayingAudio.currentTime = 0; // Reset to start
+                        if (currentPlayingButton) {
+                            currentPlayingButton.textContent = 'Play Demo';
+                            currentPlayingButton.classList.remove('bg-red-600', 'hover:bg-red-700');
+                            currentPlayingButton.classList.add('bg-purple-600', 'hover:bg-purple-700');
+                        }
+                    }
+
+                    if (audio.paused) {
+                        // Play the clicked audio
+                        audio.play().then(() => {
+                            // Only update button state if play was successful
+                            button.textContent = 'Pause Demo';
+                            button.classList.remove('bg-purple-600', 'hover:bg-purple-700');
+                            button.classList.add('bg-red-600', 'hover:bg-red-700');
+                            currentPlayingAudio = audio;
+                            currentPlayingButton = button;
+                        }).catch(e => {
+                            // If play fails, revert button state to original "Play Demo"
+                            console.error("Error playing audio:", e);
+                            button.textContent = 'Play Demo';
+                            button.classList.remove('bg-red-600', 'hover:bg-red-700');
+                            button.classList.add('bg-purple-600', 'hover:bg-purple-700');
+                            currentPlayingAudio = null;
+                            currentPlayingButton = null;
+                        });
+                    } else {
+                        // Pause the clicked audio
+                        audio.pause();
+                        button.textContent = 'Play Demo';
+                        button.classList.remove('bg-red-600', 'hover:bg-red-700');
+                        button.classList.add('bg-purple-600', 'hover:bg-purple-700');
+                        currentPlayingAudio = null;
+                        currentPlayingButton = null;
+                    }
+                });
+            });
+        });
+    </script>
+
+    
+</body>
+</html>
+
+<!-- End of HTML Document -->
